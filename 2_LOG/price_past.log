@@ -1,7 +1,0 @@
-2026-09-05 17:14:41,251  INFO    endpoint   https://api.electricitymaps.com/v4/price-day-ahead/past
-2026-09-05 17:14:41,251  INFO    params     temporalGranularity=15_minutes {'datetime': '2026-09-05T15:00:00Z'}
-2026-09-05 17:14:41,251  INFO    window     from 2026-09-05T15:00:00Z (17:00 Europe/Copenhagen) onwards
-2026-09-05 17:14:41,441  ERROR   DK-DK1   HTTP 401  {"error":"Request unauthorized for zoneKey=DK-DK1,requestType=past,dataType=price-day-ahead.","message":"You do not have access to this specific endpoint for this specific zone. Please visit https://h
-2026-09-05 17:14:41,796  ERROR   DK-DK2   HTTP 401  {"error":"Request unauthorized for zoneKey=DK-DK2,requestType=past,dataType=price-day-ahead.","message":"You do not have access to this specific endpoint for this specific zone. Please visit https://h
-2026-09-05 17:14:41,798  INFO    wrote 0 rows -> /Users/daorl/Documents/0_PROJECTS/Hack-on-the-Grid-Electricity-Maps-Hackathon/0_RESULTS/price_past.csv
-2026-09-05 17:14:41,798  INFO    log -> /Users/daorl/Documents/0_PROJECTS/Hack-on-the-Grid-Electricity-Maps-Hackathon/2_LOG/price_past.log
