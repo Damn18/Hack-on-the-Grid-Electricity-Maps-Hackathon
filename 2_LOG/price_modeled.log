@@ -1,6 +1,7 @@
-2026-09-05 17:06:25,665  INFO    endpoint   https://api.electricitymaps.com/v4/price-day-ahead/modeled
-2026-09-05 17:06:25,665  INFO    params     temporalGranularity=5_minutes 
-2026-09-05 17:06:25,854  ERROR   DK-DK1   HTTP 401  {"error":"Request unauthorized for zoneKey=DK-DK1,requestType=modeled,dataType=price-day-ahead.","message":"You do not have access to this specific endpoint for this specific zone. Please visit https:
-2026-09-05 17:06:26,043  ERROR   DK-DK2   HTTP 401  {"error":"Request unauthorized for zoneKey=DK-DK2,requestType=modeled,dataType=price-day-ahead.","message":"You do not have access to this specific endpoint for this specific zone. Please visit https:
-2026-09-05 17:06:26,044  INFO    wrote 0 rows -> /Users/daorl/Documents/0_PROJECTS/Hack-on-the-Grid-Electricity-Maps-Hackathon/0_RESULTS/price_modeled.csv
-2026-09-05 17:06:26,044  INFO    log -> /Users/daorl/Documents/0_PROJECTS/Hack-on-the-Grid-Electricity-Maps-Hackathon/2_LOG/price_modeled.log
+2026-09-05 17:14:43,031  INFO    endpoint   https://api.electricitymaps.com/v4/price-day-ahead/modeled
+2026-09-05 17:14:43,031  INFO    params     temporalGranularity=15_minutes 
+2026-09-05 17:14:43,031  INFO    window     from 2026-09-05T15:00:00Z (17:00 Europe/Copenhagen) onwards
+2026-09-05 17:14:43,227  ERROR   DK-DK1   HTTP 401  {"error":"Request unauthorized for zoneKey=DK-DK1,requestType=modeled,dataType=price-day-ahead.","message":"You do not have access to this specific endpoint for this specific zone. Please visit https:
+2026-09-05 17:14:43,436  ERROR   DK-DK2   HTTP 401  {"error":"Request unauthorized for zoneKey=DK-DK2,requestType=modeled,dataType=price-day-ahead.","message":"You do not have access to this specific endpoint for this specific zone. Please visit https:
+2026-09-05 17:14:43,438  INFO    wrote 0 rows -> /Users/daorl/Documents/0_PROJECTS/Hack-on-the-Grid-Electricity-Maps-Hackathon/0_RESULTS/price_modeled.csv
+2026-09-05 17:14:43,438  INFO    log -> /Users/daorl/Documents/0_PROJECTS/Hack-on-the-Grid-Electricity-Maps-Hackathon/2_LOG/price_modeled.log
