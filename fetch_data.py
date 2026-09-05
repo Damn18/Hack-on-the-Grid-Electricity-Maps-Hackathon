@@ -1,11 +1,15 @@
 """Very basic Electricity Maps API fetch.
 
 Docs: https://app.electricitymaps.com/docs
-Set your token first:  export EM_TOKEN=your_api_token
+Token is read from the .env file (see .env.example).
 """
 
 import os
+
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_URL = "https://api.electricitymap.org/v3"
 ZONE = "IT"  # e.g. IT, DE, FR
