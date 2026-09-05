@@ -9,6 +9,7 @@ Docs: https://app.electricitymaps.com/docs/reference/day-ahead-price/actual
 import csv
 import logging
 import os
+import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -20,6 +21,11 @@ load_dotenv(ROOT / ".env")
 
 BASE_URL = "https://api.electricitymaps.com/v4/price-day-ahead"
 GRANULARITY = "5_minutes"
+
+# Re-running a script with an attempt number retries the same endpoint at a
+# different granularity and writes to separate files, e.g.
+#   python price_past.py 2   ->  price_past_2ATTEMPT.{csv,log} at 15_minutes
+ATTEMPTS = {"2": "15_minutes"}
 ZONES = ["DK-DK1", "DK-DK2"]  # Denmark has no single "DK" zone, only the two bidding zones
 FIELDS = ["zone", "datetime", "value", "unit", "source", "temporalGranularity"]
 
@@ -51,19 +57,35 @@ def _points(payload):
     return [payload]  # 'latest' returns a single bare object
 
 
+def _attempt():
+    """Read an optional attempt number from the command line."""
+    number = sys.argv[1] if len(sys.argv) > 1 else None
+    if number is None:
+        return "", GRANULARITY
+    if number not in ATTEMPTS:
+        raise SystemExit(f"unknown attempt {number!r}, expected one of {sorted(ATTEMPTS)}")
+    return f"_{number}ATTEMPT", ATTEMPTS[number]
+
+
 def run(name, endpoint, params=None):
-    """Call one endpoint for every Danish zone, write a CSV and a log."""
+    """Call one endpoint for every Danish zone, write a CSV and a log.
+
+    Previous attempts are never overwritten: attempt 2 writes its own
+    *_2ATTEMPT.csv and *_2ATTEMPT.log alongside the originals.
+    """
+    suffix, granularity = _attempt()
+    name = f"{name}{suffix}"
     log, log_file = _logger(name)
     csv_file = ROOT / "0_RESULTS" / f"{name}.csv"
     csv_file.parent.mkdir(exist_ok=True)
 
     url = f"{BASE_URL}/{endpoint}"
     log.info("endpoint   %s", url)
-    log.info("params     temporalGranularity=%s %s", GRANULARITY, params or "")
+    log.info("params     temporalGranularity=%s %s", granularity, params or "")
 
     rows = []
     for zone in ZONES:
-        query = {"zone": zone, "temporalGranularity": GRANULARITY, **(params or {})}
+        query = {"zone": zone, "temporalGranularity": granularity, **(params or {})}
         try:
             resp = requests.get(url, params=query, headers={"auth-token": os.environ["EM_TOKEN"]}, timeout=30)
         except requests.RequestException as exc:
