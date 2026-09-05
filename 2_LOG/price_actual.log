@@ -1,0 +1,7 @@
+2026-09-05 17:14:39,268  INFO    endpoint   https://api.electricitymaps.com/v4/price-day-ahead/actual
+2026-09-05 17:14:39,268  INFO    params     temporalGranularity=15_minutes {'start': '2026-09-05T15:00:00Z', 'end': '2026-09-06T15:00:00Z'}
+2026-09-05 17:14:39,268  INFO    window     from 2026-09-05T15:00:00Z (17:00 Europe/Copenhagen) onwards
+2026-09-05 17:14:39,746  INFO    DK-DK1   HTTP 200  95 points kept (1 dropped before 17:00)  2026-09-05T15:15:00.000Z -> 2026-09-06T14:45:00.000Z  range -0.21 to 143.89 EUR/MWh
+2026-09-05 17:14:39,953  INFO    DK-DK2   HTTP 200  95 points kept (1 dropped before 17:00)  2026-09-05T15:15:00.000Z -> 2026-09-06T14:45:00.000Z  range 0.11 to 141.31 EUR/MWh
+2026-09-05 17:14:39,956  INFO    wrote 190 rows -> /Users/daorl/Documents/0_PROJECTS/Hack-on-the-Grid-Electricity-Maps-Hackathon/0_RESULTS/price_actual.csv
+2026-09-05 17:14:39,956  INFO    log -> /Users/daorl/Documents/0_PROJECTS/Hack-on-the-Grid-Electricity-Maps-Hackathon/2_LOG/price_actual.log
